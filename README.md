@@ -1,7 +1,7 @@
 # month-navigation-vue
 Vue component for month navigation with navigation arrows.
 
-![Demo](https://github.com/andrew-svirin/month-navigation-vue/raw/master/src/example/demo.gif "Demo")
+![](https://github.com/andrew-svirin/month-navigation-vue/blob/master/example/demo.gif)
 
 ## Installation
 ```
