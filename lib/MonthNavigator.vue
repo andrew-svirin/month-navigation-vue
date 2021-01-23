@@ -1,51 +1,176 @@
 <template>
   <div class="month-navigator__container">
-    <button
-        type="button"
-        @click="onMinusMonthButton()"
-    >
-      &lsaquo;
-    </button>
-    <p>
-      {{ currentMonth }} {{ currentYear }}
+    <div class="button-container">
+      <button
+          v-show="displayBackward"
+          class="chevron left"
+          type="button"
+          @click="onMinusMonthButton()"
+      >
+        &lsaquo;
+      </button>
+    </div>
+    <p v-if="date">
+      {{ monthValue(date) }} {{ yearValue(date) }}
     </p>
-    <button
-        type="button"
-        @click="onPlusMonthButton()"
-    >
-      &rsaquo;
-    </button>
+    <div class="button-container">
+      <button
+          v-show="displayForward"
+          class="chevron right"
+          type="button"
+          @click="onPlusMonthButton()"
+      >
+        &rsaquo;
+      </button>
+    </div>
   </div>
 </template>
 <script>
+import _ from 'lodash'
+
 export default {
   name: 'month-navigator',
+
+  props: {
+    value: {
+      type: [Object, Date],
+      default: () => {
+        return {}
+      },
+    },
+    backwardBoundValue: {
+      type: [Object, Date],
+      default: null,
+    },
+    forwardBoundValue: {
+      type: [Object, Date],
+      default: null,
+    },
+    months: {
+      type: Array,
+      default() {
+        return [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December',
+        ]
+      }
+    },
+  },
 
   emits: [
     'change',
   ],
 
   data: () => ({
-    currentMonth: 'O1',
-    currentYear: 'O2',
+    date: null,
+    displayBackward: true,
+    displayForward: true,
   }),
 
+  mounted() {
+    this.init()
+  },
+
   methods: {
+    init() {
+      this.date = this.value || new Date()
+    },
+    onChange() {
+      // Check to display backward.
+      if (_.isDate(this.backwardBoundValue)) {
+        this.displayBackward = this.backwardBoundValue.getTime() < this.date.getTime()
+      }
+      // Check to display forward.
+      if (_.isDate(this.forwardBoundValue)) {
+        this.displayForward = this.forwardBoundValue.getTime() > this.date.getTime()
+      }
+      this.$emit('change', this.date)
+    },
     onMinusMonthButton() {
-      this.$emit('change', 'ok')
+      this.date = new Date(this.date.setMonth(this.date.getMonth() - 1));
+      this.onChange()
     },
     onPlusMonthButton() {
-      this.$emit('change', 'ok')
+      this.date = new Date(this.date.setMonth(this.date.getMonth() + 1));
+      this.onChange()
+    },
+    monthValue(date) {
+      return this.months[date.getMonth()]
+    },
+    yearValue(date) {
+      return date.getFullYear()
     },
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+$link-color: #409eff;
 .month-navigator__container {
-  width: 400px;
-  position: relative;
-  border: 1px solid #DDDDDD;
-  border-radius: 5px;
+  color: #606266;
+  font-size: 1.5rem;
+  border: 1px solid #dcdfe6;
+  background: linear-gradient(#f4f5f8, #f1f3f6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > p {
+    padding: 0 1em;
+    width: 200px;
+    text-align: center;
+  }
+
+  > .button-container {
+    width: 24px;
+    display: block;
+
+    > button {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+  }
+
+  .chevron {
+    width: 24px;
+    height: 24px;
+    border-radius: 15%;
+    position: relative;
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;
+      left: 50%;
+      top: 50%;
+      margin-top: -6px;
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+    }
+
+    &.left::after {
+      border-right: 6px solid $link-color;
+      margin-left: -3px;
+    }
+
+    &.right::after {
+      border-left: 6px solid $link-color;
+      margin-left: -3px;
+    }
+  }
 }
 </style>

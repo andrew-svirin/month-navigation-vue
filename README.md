@@ -1,6 +1,8 @@
 # month-navigation-vue
 Vue component for month navigation with navigation arrows.
 
+![Demo](https://github.com/andrew-svirin/month-navigation-vue/raw/master/src/example/demo.gif "Demo")
+
 ## Installation
 ```
 npm install month-navigation-vue --save
@@ -37,3 +39,6 @@ import 'month-navigator-vue/dist/month-navigator-vue.css'
 | Props | Type | Default | Description |
 | ------ | ------ | ------ | ------ |
 | value | Date | null | Default selected date |
+| months | Array | {} | Array of month names |
+| backwardBoundValue | Date | null | Left bounded date when backward arrow will invisible. |
+| forwardBoundValue | Date | null | Left bounded date when forward arrow will invisible. |

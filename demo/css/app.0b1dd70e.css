@@ -1,0 +1,50 @@
+.month-navigator__container {
+  color: #606266;
+  font-size: 1.5rem;
+  border: 1px solid #dcdfe6;
+  background: linear-gradient(#f4f5f8, #f1f3f6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.month-navigator__container > p {
+  padding: 0 1em;
+  width: 200px;
+  text-align: center;
+}
+.month-navigator__container > .button-container {
+  width: 24px;
+  display: block;
+}
+.month-navigator__container > .button-container > button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.month-navigator__container .chevron {
+  width: 24px;
+  height: 24px;
+  border-radius: 15%;
+  position: relative;
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+.month-navigator__container .chevron:after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: 50%;
+  margin-top: -6px;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+}
+.month-navigator__container .chevron.left::after {
+  border-right: 6px solid #409eff;
+  margin-left: -3px;
+}
+.month-navigator__container .chevron.right::after {
+  border-left: 6px solid #409eff;
+  margin-left: -3px;
+}
