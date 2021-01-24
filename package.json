@@ -1,18 +1,33 @@
 {
   "name": "month-navigation-vue",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Vue component for month navigation with navigation arrows.",
-  "main": "dist/month-navigator-vue.umd.js",
+  "main": "dist/month-navigation-vue.umd.min.js",
+  "style": "dist/month-navigation-vue.css",
   "scripts": {
     "dev": "vue-cli-service build --dest demo --mode development",
     "watch": "vue-cli-service build --dest demo --mode development --watch",
-    "build": "vue-cli-service build --dest dist --target lib --name month-navigator-vue lib/index.js",
-    "test": "jest my-test"
+    "build": "vue-cli-service build --dest dist --target lib --name month-navigation-vue lib/index.js",
+    "test": "vue-cli-service test:unit"
   },
+  "files": [
+    "dist/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andrew-svirin/month-navigation-vue.git"
   },
+  "keywords": [
+    "vue",
+    "month",
+    "navigator",
+    "navigation",
+    "vue-month-navigator",
+    "vue-month-navigation",
+    "month-navigator",
+    "month-navigation",
+    "calendar"
+  ],
   "author": {
     "name": "Andrew Svirin",
     "url": "https://ua.linkedin.com/in/andriy-svirin-0138a177"
@@ -23,10 +38,14 @@
   },
   "homepage": "https://github.com/andrew-svirin/month-navigation-vue#readme",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
+    "@vue/cli-plugin-unit-jest": "^4.5.11",
     "@vue/cli-service": "^4.5.11",
     "@vue/compiler-sfc": "^3.0.5",
     "@vue/test-utils": "^1.1.2",
+    "babel-jest": "^26.6.3",
     "html-webpack-plugin": "^4.5.1",
+    "jest": "^26.6.3",
     "lodash": "^4.17.20",
     "path": "^0.12.7",
     "sass": "^1.32.5",
@@ -42,10 +61,10 @@
   "jest": {
     "moduleFileExtensions": [
       "js",
-      "json",
       "vue"
     ],
     "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
       ".*\\.(vue)$": "vue-jest"
     }
   }

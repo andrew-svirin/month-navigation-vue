@@ -11,15 +11,15 @@ npm install month-navigation-vue --save
 ## Usage
 ```vue
 <template>
-  <vue-calendar v-model="value" />
+  <month-navigation v-model="value" />
 </template>
 
 <script>
-import MonthNavigator from 'month-navigator-vue'
+import MonthNavigation from 'month-navigation-vue'
 
 export default {
   components: {
-    MonthNavigator
+    MonthNavigation
   },
   data () {
     return {
@@ -31,7 +31,7 @@ export default {
 ```
 Add styles for component to your project
 ```
-import 'month-navigator-vue/dist/month-navigator-vue.css'
+import 'month-navigation-vue/dist/month-navigation-vue.css'
 ```
 
 ### Options

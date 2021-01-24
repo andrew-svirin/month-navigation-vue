@@ -1,5 +1,5 @@
 <template>
-  <div class="month-navigator__container">
+  <div class="month-navigation__container">
     <div class="button-container">
       <button
           v-show="displayBackward"
@@ -29,7 +29,7 @@
 import _ from 'lodash'
 
 export default {
-  name: 'month-navigator',
+  name: 'month-navigation',
 
   props: {
     value: {
@@ -116,7 +116,7 @@ export default {
 
 <style lang="scss">
 $link-color: #409eff;
-.month-navigator__container {
+.month-navigation__container {
   color: #606266;
   font-size: 1.5rem;
   border: 1px solid #dcdfe6;
