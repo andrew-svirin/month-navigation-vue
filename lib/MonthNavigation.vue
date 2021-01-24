@@ -127,7 +127,8 @@ $link-color: #409eff;
 
   > p {
     padding: 0 1em;
-    width: 200px;
+    margin: 1em 0;
+    width: 220px;
     text-align: center;
   }
 
@@ -139,6 +140,7 @@ $link-color: #409eff;
       border: none;
       background: transparent;
       cursor: pointer;
+      font-size: 0px;
     }
   }
 
