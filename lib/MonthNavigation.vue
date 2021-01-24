@@ -81,8 +81,21 @@ export default {
       this.initDate()
       this.initDisplays()
     },
+    updateDateToBeginOfDay(date) {
+      date.setHours(0);
+      date.setMinutes(0);
+      date.setSeconds(0);
+      date.setMilliseconds(0);
+    },
     initDate() {
       this.date = this.value || new Date()
+      this.updateDateToBeginOfDay(this.date)
+      if (_.isDate(this.backwardBoundValue)) {
+        this.updateDateToBeginOfDay(this.backwardBoundValue)
+      }
+      if (_.isDate(this.forwardBoundValue)) {
+        this.updateDateToBeginOfDay(this.forwardBoundValue)
+      }
     },
     initDisplays() {
       // Check to display backward.

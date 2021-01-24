@@ -22,8 +22,7 @@ export default {
   },
   data: () => ({
     value: new Date('1995-12-17T03:24:00'),
-    forwardBoundValue: new Date('1995-12-17T03:24:00'),
-    // forwardBoundValue: new Date('1996-02-17T03:24:00'),
+    forwardBoundValue: new Date('1995-12-17T05:24:00'),
   }),
   computed: {
     months: {

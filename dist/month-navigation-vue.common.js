@@ -17438,12 +17438,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17fe96bb-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./lib/MonthNavigation.vue?vue&type=template&id=c57f2270&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17fe96bb-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./lib/MonthNavigation.vue?vue&type=template&id=1788d4e6&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"month-navigation__container"},[_c('div',{staticClass:"button-container"},[_c('button',{directives:[{name:"show",rawName:"v-show",value:(_vm.displayBackward),expression:"displayBackward"}],staticClass:"chevron left",attrs:{"type":"button"},on:{"click":function($event){return _vm.onMinusMonthButton()}}},[_vm._v(" ‹ ")])]),(_vm.date)?_c('p',[_vm._v(" "+_vm._s(_vm.monthValue(_vm.date))+" "+_vm._s(_vm.yearValue(_vm.date))+" ")]):_vm._e(),_c('div',{staticClass:"button-container"},[_c('button',{directives:[{name:"show",rawName:"v-show",value:(_vm.displayForward),expression:"displayForward"}],staticClass:"chevron right",attrs:{"type":"button"},on:{"click":function($event){return _vm.onPlusMonthButton()}}},[_vm._v(" › ")])])])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./lib/MonthNavigation.vue?vue&type=template&id=c57f2270&
+// CONCATENATED MODULE: ./lib/MonthNavigation.vue?vue&type=template&id=1788d4e6&
 
 // EXTERNAL MODULE: ./node_modules/lodash/lodash.js
 var lodash = __webpack_require__("2ef0");
@@ -17533,8 +17533,21 @@ var lodash_default = /*#__PURE__*/__webpack_require__.n(lodash);
       this.initDate()
       this.initDisplays()
     },
+    updateDateToBeginOfDay(date) {
+      date.setHours(0);
+      date.setMinutes(0);
+      date.setSeconds(0);
+      date.setMilliseconds(0);
+    },
     initDate() {
       this.date = this.value || new Date()
+      this.updateDateToBeginOfDay(this.date)
+      if (lodash_default.a.isDate(this.backwardBoundValue)) {
+        this.updateDateToBeginOfDay(this.backwardBoundValue)
+      }
+      if (lodash_default.a.isDate(this.forwardBoundValue)) {
+        this.updateDateToBeginOfDay(this.forwardBoundValue)
+      }
     },
     initDisplays() {
       // Check to display backward.
