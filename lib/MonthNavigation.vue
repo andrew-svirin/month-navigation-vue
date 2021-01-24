@@ -30,7 +30,6 @@ import _ from 'lodash'
 
 export default {
   name: 'month-navigation',
-
   props: {
     value: {
       type: [Object, Date],
@@ -66,26 +65,26 @@ export default {
       }
     },
   },
-
   emits: [
     'change',
   ],
-
   data: () => ({
     date: null,
     displayBackward: true,
     displayForward: true,
   }),
-
   mounted() {
     this.init()
   },
-
   methods: {
     init() {
+      this.initDate()
+      this.initDisplays()
+    },
+    initDate() {
       this.date = this.value || new Date()
     },
-    onChange() {
+    initDisplays() {
       // Check to display backward.
       if (_.isDate(this.backwardBoundValue)) {
         this.displayBackward = this.backwardBoundValue.getTime() < this.date.getTime()
@@ -94,6 +93,9 @@ export default {
       if (_.isDate(this.forwardBoundValue)) {
         this.displayForward = this.forwardBoundValue.getTime() > this.date.getTime()
       }
+    },
+    onChange() {
+      this.initDisplays()
       this.$emit('change', this.date)
     },
     onMinusMonthButton() {
