@@ -118,7 +118,7 @@ export default {
 $link-color: #409eff;
 .month-navigation__container {
   color: #606266;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   border: 1px solid #dcdfe6;
   background: linear-gradient(#f4f5f8, #f1f3f6);
   display: flex;
@@ -128,7 +128,7 @@ $link-color: #409eff;
   > p {
     padding: 0 1em;
     margin: 1em 0;
-    width: 220px;
+    width: 190px;
     text-align: center;
   }
 
