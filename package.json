@@ -1,6 +1,6 @@
 {
   "name": "month-navigation-vue",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Vue component for month navigation with navigation arrows.",
   "main": "dist/month-navigation-vue.umd.min.js",
   "style": "dist/month-navigation-vue.css",

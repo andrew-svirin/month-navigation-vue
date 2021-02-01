@@ -21,8 +21,8 @@ export default {
     MonthNavigation,
   },
   data: () => ({
-    value: new Date('1995-12-17T03:24:00'),
-    forwardBoundValue: new Date('1995-12-17T05:24:00'),
+    value: new Date('1995-12-17T03:24:00.000Z'),
+    forwardBoundValue: new Date('1995-12-17T05:24:00.000Z'),
   }),
   computed: {
     months: {

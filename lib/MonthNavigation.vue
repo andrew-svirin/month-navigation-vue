@@ -11,7 +11,7 @@
       </button>
     </div>
     <p v-if="date">
-      {{ monthValue(date) }} {{ yearValue(date) }}
+      {{ monthValue() }} {{ yearValue() }}
     </p>
     <div class="button-container">
       <button
@@ -112,18 +112,18 @@ export default {
       this.$emit('change', this.date)
     },
     onMinusMonthButton() {
-      this.date = new Date(this.date.setMonth(this.date.getMonth() - 1));
+      this.date = new Date(this.date.setMonth(this.date.getMonth() - 1))
       this.onChange()
     },
     onPlusMonthButton() {
-      this.date = new Date(this.date.setMonth(this.date.getMonth() + 1));
+      this.date = new Date(this.date.setMonth(this.date.getMonth() + 1))
       this.onChange()
     },
-    monthValue(date) {
-      return this.months[date.getMonth()]
+    monthValue() {
+      return this.months[this.date.getMonth()]
     },
-    yearValue(date) {
-      return date.getFullYear()
+    yearValue() {
+      return this.date.getFullYear()
     },
   }
 }
